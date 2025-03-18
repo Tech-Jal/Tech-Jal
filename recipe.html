@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Collection - FoodFusion</title>
+    <link rel="stylesheet" href="bstp\css\bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e67e22;
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+        }
+
+         /* Navigation Styles */
+         .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+        .recipe-card {
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .recipe-card:hover {
+            transform: translateY(-5px);
+        }
+        .recipe-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        .difficulty-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+        }
+        .cuisine-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+        .filter-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .featured-recipe {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+         /* Footer */
+        .footer-dark {
+            background-color: var(--dark-bg);
+            color: white;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-egg-fried me-2"></i>FoodFusion
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="recipe.html">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cookbook.html">Cookbook</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="education.html">Learn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-primary me-2">Login</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#joinModal">Join Us</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4">Recipe Collection</h1>
+            <p class="lead">Explore our curated collection of recipes from around the world</p>
+        </div>
+    </section>
+
+    <!-- Featured Recipe -->
+    <section class="py-5">
+        <div class="container">
+            <div class="featured-recipe">
+                <h2 class="text-center mb-4">Featured Recipe of the Week</h2>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="video-container mb-3">
+                            <iframe src="images\recipe-vid.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <!-- <video controls autoplay width="600">
+                                    <source src="images\recipe-video.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video> -->
+                            </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Thai Green Curry</h3>
+                        <p class="text-muted">A fragrant and creamy Thai curry with fresh vegetables and your choice of protein.</p>
+                        <div class="mb-3">
+                            <span class="badge bg-info me-2">Asian Cuisine</span>
+                            <span class="badge bg-warning">Medium Difficulty</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="container mb-5">
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Cuisine Type</label>
+                    <select class="form-select">
+                        <option value="">All Cuisines</option>
+                        <option>Asian</option>
+                        <option>Mediterranean</option>
+                        <option>Italian</option>
+                        <option>Mexican</option>
+                        <option>Indian</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Dietary Preference</label>
+                    <select class="form-select">
+                        <option value="">All Diets</option>
+                        <option>Vegetarian</option>
+                        <option>Vegan</option>
+                        <option>Gluten-Free</option>
+                        <option>Keto</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Difficulty Level</label>
+                    <select class="form-select">
+                        <option value="">All Levels</option>
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Cooking Time</label>
+                    <select class="form-select">
+                        <option value="">Any Time</option>
+                        <option>Under 30 mins</option>
+                        <option>30-60 mins</option>
+                        <option>Over 60 mins</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipe Grid -->
+    <section class="container mb-5">
+        <div class="row">
+            <!-- Recipe Card 1 -->
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <span class="badge bg-primary cuisine-badge">Italian</span>
+                    <span class="badge bg-success difficulty-badge">Easy</span>
+                    <img src="images\recipe-pic1.avif" class="card-img-top recipe-image" alt="Homemade Pizza">
+                    <div class="card-body">
+                        <h5 class="card-title">Classic Margherita Pizza</h5>
+                        <p class="card-text">Traditional Italian pizza with fresh basil, mozzarella, and tomato sauce.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted"><i class="far fa-clock"></i> 45 mins</small>
+                            <span class="badge bg-light text-dark">Vegetarian</span>
+                        </div>
+                        <a href="#" class="btn btn-outline-primary mt-3 w-100">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe Card 2 -->
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <span class="badge bg-primary cuisine-badge">Asian</span>
+                    <span class="badge bg-warning difficulty-badge">Medium</span>
+                    <img src="images\recipe-pic2.avif" class="card-img-top recipe-image" alt="Sushi Rolls">
+                    <div class="card-body">
+                        <h5 class="card-title">California Sushi Rolls</h5>
+                        <p class="card-text">Fresh and colorful sushi rolls with crab, avocado, and cucumber.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted"><i class="far fa-clock"></i> 60 mins</small>
+                            <span class="badge bg-light text-dark">Seafood</span>
+                        </div>
+                        <a href="#" class="btn btn-outline-primary mt-3 w-100">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe Card 3 -->
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <span class="badge bg-primary cuisine-badge">Indian</span>
+                    <span class="badge bg-danger difficulty-badge">Hard</span>
+                    <img src="images\recipe-pic3.avif" class="card-img-top recipe-image" alt="Butter Chicken">
+                    <div class="card-body">
+                        <h5 class="card-title">Butter Chicken</h5>
+                        <p class="card-text">Creamy and rich Indian curry with tender chicken pieces.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted"><i class="far fa-clock"></i> 90 mins</small>
+                            <span class="badge bg-light text-dark">Non-Veg</span>
+                        </div>
+                        <a href="#" class="btn btn-outline-primary mt-3 w-100">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Recipe Cards -->
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <span class="badge bg-primary cuisine-badge">Mexican</span>
+                    <span class="badge bg-success difficulty-badge">Easy</span>
+                    <img src="images\recipe-pic4.avif" class="card-img-top recipe-image" alt="Guacamole">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Guacamole</h5>
+                        <p class="card-text">Classic Mexican dip with ripe avocados, lime, and fresh herbs.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted"><i class="far fa-clock"></i> 15 mins</small>
+                            <span class="badge bg-light text-dark">Vegan</span>
+                        </div>
+                        <a href="#" class="btn btn-outline-primary mt-3 w-100">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <span class="badge bg-primary cuisine-badge">Mediterranean</span>
+                    <span class="badge bg-warning difficulty-badge">Medium</span>
+                    <img src="images\recipe-pic5.avif" class="card-img-top recipe-image" alt="Greek Salad">
+                    <div class="card-body">
+                        <h5 class="card-title">Greek Salad</h5>
+                        <p class="card-text">Fresh Mediterranean salad with feta cheese and olives.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted"><i class="far fa-clock"></i> 20 mins</small>
+                            <span class="badge bg-light text-dark">Vegetarian</span>
+                        </div>
+                        <a href="#" class="btn btn-outline-primary mt-3 w-100">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card recipe-card">
+                    <span class="badge bg-primary cuisine-badge">French</span>
+                    <span class="badge bg-danger difficulty-badge">Hard</span>
+                    <img src="images\recipe-pic6.avif" class="card-img-top recipe-image" alt="Coq au Vin">
+                    <div class="card-body">
+                        <h5 class="card-title">Coq au Vin</h5>
+                        <p class="card-text">Classic French chicken braised in wine with mushrooms.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted"><i class="far fa-clock"></i> 120 mins</small>
+                            <span class="badge bg-light text-dark">Non-Veg</span>
+                        </div>
+                        <a href="#" class="btn btn-outline-primary mt-3 w-100">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-dark py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">About FoodFusion</h5>
+                    <p class="mb-3">Your ultimate destination for culinary exploration and creativity. Join our community of food enthusiasts and discover amazing recipes.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light me-2"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-light me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light me-2"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Recipes</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Cookbook</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Learn</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bstp/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
